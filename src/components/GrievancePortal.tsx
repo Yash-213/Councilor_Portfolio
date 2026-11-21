@@ -501,11 +501,41 @@ export const GrievancePortal: React.FC = () => {
               </div>
               <button
                 type="submit"
-                className="px-6 py-2.5 rounded-xl bg-[#168447] hover:bg-[#106335] text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                className="px-6 py-2.5 rounded-xl bg-[#168447] hover:bg-[#106335] text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md active:scale-95"
               >
                 <span>{t('grievance.searchBtn')}</span>
               </button>
             </form>
+
+            {/* Quick Demo Test Chips */}
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-gray-400 font-mono text-[11px]">
+                {isMr ? 'तपासणीसाठी नमुना टोकन निवडा:' : 'Quick Test Sample Tokens:'}
+              </span>
+              {[
+                { id: 'AKL-W8-2025-0842', label: isMr ? 'प्रगतीत (In Progress)' : 'In Progress' },
+                { id: 'AKL-W8-2025-0819', label: isMr ? 'निवारण झाले (Resolved)' : 'Resolved' },
+                { id: 'AKL-W8-2025-0904', label: isMr ? 'विभागाकडे वर्ग (Queued)' : 'Queued' },
+              ].map((token) => (
+                <button
+                  key={token.id}
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery(token.id);
+                    const tickets = getStoredTickets();
+                    const found = tickets.find((t) => t.ticketId === token.id);
+                    if (found) {
+                      setSearchedTicket(found);
+                      setSearchNotFound(false);
+                    }
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-[#0F1624] hover:bg-[#2D3E5E] border border-slate-700 text-slate-300 hover:text-white font-mono text-[11px] transition-colors cursor-pointer flex items-center gap-1.5"
+                >
+                  <span className="text-orange-400 font-bold">{token.id}</span>
+                  <span className="text-gray-400 font-sans text-[10px]">({token.label})</span>
+                </button>
+              ))}
+            </div>
 
             {searchNotFound && (
               <div className="p-4 rounded-xl bg-red-950/60 border border-red-500/40 text-red-300 text-xs text-center">

@@ -74,7 +74,7 @@ function MainAppContent() {
 
       {/* Main Content Sections */}
       <main className="flex-1 pt-[90px] sm:pt-[102px]">
-        <Hero />
+        <Hero accentMood="saffron" />
         <MetricsBar />
         <AboutSection />
         <DevelopmentWorks key={`works-${refreshTrigger}`} />

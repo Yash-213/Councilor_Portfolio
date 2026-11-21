@@ -96,13 +96,13 @@ export const AICivicAssistant: React.FC = () => {
 
   return (
     <>
-      {/* Floating Trigger Button */}
-      <div className="fixed bottom-6 right-6 z-40 hidden sm:block">
+      {/* Floating Trigger Button with Ambient AI Glow Aura */}
+      <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#FF8500] to-[#168447] text-white shadow-2xl hover:shadow-orange-500/25 hover:scale-105 active:scale-95 transition-all font-bold text-xs border border-white/20 cursor-pointer"
+          className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#FF8500] via-[#DE7200] to-[#168447] text-white shadow-2xl hover:shadow-[0_0_25px_rgba(255,133,0,0.5)] hover:scale-105 active:scale-95 transition-all font-bold text-xs border border-white/30 cursor-pointer"
         >
-          <span className="material-symbols-outlined text-[20px]">smart_toy</span>
+          <span className="material-symbols-outlined text-[20px] animate-pulse">smart_toy</span>
           <span>{isMr ? 'AI नागरी मित्र' : 'AI Civic Mitra'}</span>
           <span className="w-2 h-2 rounded-full bg-white animate-ping"></span>
         </button>

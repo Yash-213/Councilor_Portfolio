@@ -9,9 +9,9 @@
   --color-civic-green-dark: #106335;
   --color-civic-green-light: #EBF7EE;
   --color-civic-navy: #172033;
-  --color-civic-navy-dark: #0F1624;
-  --color-civic-navy-card: #1F2C45;
-  --color-civic-navy-border: #2D3E5E;
+  --color-civic-navy-dark: #0B1120;
+  --color-civic-navy-card: #131D31;
+  --color-civic-navy-border: #243452;
   --color-civic-grey: #F4F5F7;
   --color-civic-grey-dark: #E5E7EB;
   --color-charcoal: #111827;
@@ -50,43 +50,153 @@
   -webkit-font-smoothing: antialiased;
 }
 
-/* Continuous running marquee animation */
+/* ========================================================
+   KEYFRAME ANIMATIONS - CREATIVE PORTFOLIO STYLING
+   ======================================================== */
+
+/* Continuous running marquee */
 @keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  animation: marquee 24s linear infinite;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-/* Custom subtle animations */
+/* Float orbs animation */
+@keyframes floatOrbs {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-16px) scale(1.05); }
+}
+
+.animate-float-orbs {
+  animation: floatOrbs 8s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* Gradient shimmer for text and cards */
+@keyframes gradientShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-shimmer {
+  background-size: 200% 200%;
+  animation: gradientShimmer 6s ease infinite;
+}
+
+/* Radar Sweep Animation for GIS Map */
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-radar-sweep {
+  animation: radarSweep 7s linear infinite;
+  transform-origin: center center;
+}
+
+/* Audio wave bouncy equalizer */
+@keyframes soundWave {
+  0%, 100% { height: 4px; }
+  50% { height: 18px; }
+}
+
+.sound-bar-1 { animation: soundWave 0.9s ease-in-out infinite; }
+.sound-bar-2 { animation: soundWave 0.7s ease-in-out infinite 0.2s; }
+.sound-bar-3 { animation: soundWave 1.1s ease-in-out infinite 0.4s; }
+.sound-bar-4 { animation: soundWave 0.8s ease-in-out infinite 0.1s; }
+.sound-bar-5 { animation: soundWave 1.0s ease-in-out infinite 0.3s; }
+
+/* Pulse subtle */
 @keyframes pulseSubtle {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.02); }
+  50% { opacity: 0.88; transform: scale(1.02); }
 }
 
 .animate-pulse-subtle {
   animation: pulseSubtle 3s ease-in-out infinite;
 }
 
-@keyframes flowPulse {
-  0%, 100% { transform: scale(1); opacity: 0.75; }
-  50% { transform: scale(1.2); opacity: 1; }
+/* Glow pulse */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 133, 0, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(255, 133, 0, 0.45); }
 }
 
-.animate-flow-pulse {
-  animation: flowPulse 2s ease-in-out infinite;
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+/* ========================================================
+   MODERN UI/UX GLASSMORPHISM & BENTO UTILITIES
+   ======================================================== */
+
+.civic-card-glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.civic-navy-glass {
+  background: rgba(19, 29, 49, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(45, 62, 94, 0.7);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+}
+
+/* Bento card with gradient glowing border on hover */
+.bento-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 133, 0, 0.4);
+  box-shadow: 0 20px 35px -15px rgba(255, 133, 0, 0.12), 0 0 0 1px rgba(255, 133, 0, 0.15);
+}
+
+/* Gradient text helpers */
+.text-gradient-saffron {
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8500 50%, #FFA726 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #10B981 0%, #168447 50%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-civic {
+  background: linear-gradient(135deg, #FF6B00 0%, #EA580C 35%, #168447 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Custom subtle scrollbar */
@@ -98,17 +208,8 @@
   scrollbar-width: none;
 }
 
-/* Glassmorphism accents */
-.civic-card-glass {
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(229, 231, 235, 0.85);
-}
-
-.civic-navy-glass {
-  background: rgba(23, 32, 51, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(45, 62, 94, 0.85);
+/* Subtle dot-matrix overlay */
+.bg-dot-matrix {
+  background-image: radial-gradient(rgba(23, 32, 51, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
